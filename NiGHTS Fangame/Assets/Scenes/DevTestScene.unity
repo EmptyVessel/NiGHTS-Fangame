@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,12 +169,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.96505135, y: 0, z: 0.2620607}
-  distance: 24.040184
+  distance: 24.23399
   parent: {fileID: 766106430}
   child: {fileID: 1287400655}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 0.2653408, y: 0, z: -2.1563978}
+  - {x: -0.80280876, y: 0, z: 8.532241}
+  - {x: 23.73748, y: 0, z: -0.07591623}
 --- !u!1 &51040822
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,12 +225,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.07011394, y: 0, z: -0.997539}
-  distance: 31.377237
+  distance: 31.686605
   parent: {fileID: 1426100642}
   child: {fileID: 1886611772}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 1.9503155, y: 0, z: 4.4276886}
+  - {x: 4.4217806, y: 0, z: -4.4425945}
+  - {x: -4.1721444, y: 0, z: -31.285143}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,12 +396,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.87415695, y: 0, z: 0.48564357}
-  distance: 16.678911
+  distance: 16.737478
   parent: {fileID: 412530041}
   child: {fileID: 564945434}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 1.777689, y: 0, z: -0.04930687}
+  - {x: -2.9672623, y: 0, z: -2.4938736}
+  - {x: -13.390322, y: 0, z: 10.643217}
 --- !u!1 &412530039
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,12 +437,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.6703773, y: 0, z: 0.74202037}
-  distance: 19.541243
+  distance: 19.642555
   parent: {fileID: 1306025779}
   child: {fileID: 325979920}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 1.1423798, y: 0, z: -0.06801224}
+  - {x: -3.6786156, y: 0, z: -2.8436394}
+  - {x: -10.563801, y: 0, z: 17.411652}
 --- !u!4 &412530041
 Transform:
   m_ObjectHideFlags: 0
@@ -477,12 +493,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.5893519, y: 0, z: 0.80787647}
-  distance: 30.202648
+  distance: 30.420126
   parent: {fileID: 1287400655}
   child: {fileID: 2025413644}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -3.3921328, y: 0, z: -1.1512527}
+  - {x: -0.35848713, y: 0, z: 4.7442474}
+  - {x: 21.550547, y: 0, z: 20.807}
 --- !u!4 &529880028
 Transform:
   m_ObjectHideFlags: 0
@@ -544,12 +564,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.97064793, y: 0, z: 0.2405048}
-  distance: 11.600509
+  distance: 11.682409
   parent: {fileID: 325979920}
   child: {fileID: 1151996821}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -1.2776403, y: 0, z: -1.1172295}
+  - {x: 1.6866226, y: 0, z: -0.685978}
+  - {x: -11.668992, y: 0, z: 4.5931244}
 --- !u!1 &699685341
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,13 +604,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
-  direction: {x: -0.89362496, y: 0, z: -0.44881445}
-  distance: 24.976894
+  direction: {x: -0.96858853, y: 0, z: -0.24866918}
+  distance: 23.931559
   parent: {fileID: 1151996821}
   child: {fileID: 1882359634}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 5.7207985, y: 0, z: -6.601687}
+  - {x: -8.027782, y: 0, z: 6.1540804}
+  - {x: -20.712975, y: 0, z: -5.4623666}
 --- !u!4 &699685343
 Transform:
   m_ObjectHideFlags: 0
@@ -648,12 +676,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.9633555, y: 0, z: -0.26822802}
-  distance: 26.46998
+  distance: 26.804893
   parent: {fileID: 1886611772}
   child: {fileID: 36680785}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -4.924032, y: 0, z: 0.15396118}
+  - {x: 9.256275, y: 0, z: 6.712454}
+  - {x: 21.167757, y: 0, z: -13.96636}
 --- !u!1 &791432749
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!143 &881686246
 CharacterController:
   m_ObjectHideFlags: 0
@@ -809,7 +841,6 @@ MonoBehaviour:
   xLag: 0
   noFall: 0
   followTrack: 1
-  fuckAround: 1
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +853,6 @@ GameObject:
   - component: {fileID: 961739752}
   - component: {fileID: 961739751}
   - component: {fileID: 961739750}
-  - component: {fileID: 961739754}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -929,18 +959,55 @@ Transform:
   m_Father: {fileID: 881686247}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &961739754
+--- !u!1 &1130012096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130012101}
+  - component: {fileID: 1130012097}
+  m_Layer: 0
+  m_Name: Test_Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1130012097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961739749}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1130012096}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2724d59971cd28429725f0bed541e28, type: 3}
+  m_Script: {fileID: 11500000, guid: ab3e8065c0df19340879aaa0b4c38d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackManager: {fileID: 1850649304}
+  speed: 25
+  camera: {fileID: 0}
+  distance: 0
+--- !u!4 &1130012101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130012096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 315.66095, y: -3.2381802, z: 291.2041}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1762756110}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151996819
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,12 +1039,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.96525276, y: 0, z: -0.26131794}
-  distance: 15.995812
+  distance: 16.051872
   parent: {fileID: 564945434}
   child: {fileID: 699685343}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -0.35492897, y: 0, z: 3.7255955}
+  - {x: -0.8429146, y: 0, z: -7.752528}
+  - {x: -14.24222, y: 0, z: -0.1531205}
 --- !u!4 &1151996821
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,12 +1241,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.8280634, y: 0, z: 0.56063443}
-  distance: 31.036283
+  distance: 31.17152
   parent: {fileID: 36680785}
   child: {fileID: 529880028}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -3.50276, y: 0, z: -1.7552719}
+  - {x: 3.1515007, y: 0, z: 7.202772}
+  - {x: 26.051332, y: 0, z: 11.952555}
 --- !u!4 &1287400655
 Transform:
   m_ObjectHideFlags: 0
@@ -1222,12 +1297,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.34848875, y: 0, z: 0.93731296}
-  distance: 24.964973
+  distance: 25.147663
   parent: {fileID: 2025413644}
   child: {fileID: 412530041}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 2.57648, y: 0, z: -2.19104}
+  - {x: -8.393155, y: 0, z: 0.66231346}
+  - {x: -2.8833983, y: 0, z: 24.928751}
 --- !u!4 &1306025779
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,12 +1368,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: -0.3290755, y: 0, z: -0.9443036}
-  distance: 34.94639
+  distance: 35.12099
   parent: {fileID: 1882359634}
   child: {fileID: 51040823}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 3.0367546, y: 0, z: 4.135414}
+  - {x: 1.0234461, y: 0, z: -8.287403}
+  - {x: -15.560201, y: 0, z: -28.848013}
 --- !u!1 &1443824276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1523,103 @@ Transform:
   m_Father: {fileID: 1850649303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1762756109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1762756110}
+  - component: {fileID: 1762756113}
+  - component: {fileID: 1762756112}
+  - component: {fileID: 1762756111}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1762756110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762756109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1130012101}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1762756111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762756109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1762756112
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762756109}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1762756113
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762756109}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1850649302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,13 +1699,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
-  direction: {x: -0.72090983, y: 0, z: -0.69302887}
-  distance: 25.10717
+  direction: {x: -0.6083583, y: 0, z: -0.7936625}
+  distance: 28.874546
   parent: {fileID: 699685343}
   child: {fileID: 1426100642}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -0.7852421, y: 0, z: 5.085268}
+  - {x: 4.893549, y: 0, z: -13.568663}
+  - {x: -21.50827, y: 0, z: -14.216556}
 --- !u!4 &1882359634
 Transform:
   m_ObjectHideFlags: 0
@@ -1534,7 +1718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882359632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 295.2, y: 27.7, z: 331.6}
+  m_LocalPosition: {x: 294.5, y: 27.7, z: 336.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1572,12 +1756,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.62559223, y: 0, z: -0.78015023}
-  distance: 27.17425
+  distance: 27.568562
   parent: {fileID: 51040823}
   child: {fileID: 766106430}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: -2.7601376, y: 0, z: 3.2273436}
+  - {x: 9.967785, y: 0, z: 0.594388}
+  - {x: 9.792354, y: 0, z: -25.021713}
 --- !u!4 &1886611772
 Transform:
   m_ObjectHideFlags: 0
@@ -1624,12 +1812,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   track: {fileID: 1443824277}
   direction: {x: 0.12532018, y: 0, z: 0.9921164}
-  distance: 28.726469
+  distance: 28.994204
   parent: {fileID: 529880028}
   child: {fileID: 1306025779}
   altChild: {fileID: 0}
   add_new_node: 0
   remove_node: 0
+  interpolation:
+  - {x: 0.10057783, y: 0, z: -4.081505}
+  - {x: -6.894134, y: 0, z: 6.4039154}
+  - {x: 10.393593, y: 0, z: 26.17759}
 --- !u!4 &2025413644
 Transform:
   m_ObjectHideFlags: 0

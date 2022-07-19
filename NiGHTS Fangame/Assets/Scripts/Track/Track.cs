@@ -94,15 +94,13 @@ public class Track : MonoBehaviour
     public void UpdateAllNodes ()
     {
         Node currNode = nodes[0].GetComponent <Node>();
-        Vector3 v;
         int i = 0;
 
         while (!(i!=0 && currNode == nodes[0].GetComponent<Node>()))
         {
             currNode.gameObject.name = "node_" + i;
-            v = currNode.child.position-currNode.transform.position;
-            currNode.distance = v.magnitude;
-            currNode.direction = v.normalized;
+            currNode.direction = (currNode.child.position - currNode.transform.position).normalized;
+            currNode.UpdateConstants();
 
             currNode = currNode.child.GetComponent<Node>();
 
@@ -124,11 +122,19 @@ public class Track : MonoBehaviour
                 Gizmos.DrawLine(nodes[i].transform.position, nodes[i].GetComponent<Node>().parent.position);
             }
 
+            Gizmos.color = Color.red;
+
             //Draw forward directed nodes
             for (int i = 0; i < nodes.Count; i++)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(nodes [i].transform.position, nodes[i].GetComponent<Node>().child.position);
+                Vector3 pos = nodes[i].transform.position;
+
+                for (int e = 1; e <= 16; e++)
+                {
+
+                    Gizmos.DrawLine(pos, nodes[i].GetComponent<Node>().GetPosition (e/16f));
+                    pos = nodes[i].GetComponent<Node>().GetPosition(e / 16f);
+                }
 
                 if (nodes[i].GetComponent<Node>().altChild != null)
                 {

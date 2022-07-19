@@ -14,14 +14,16 @@ public class Train : MonoBehaviour
     }
 
     public float speed;
-    //public Camera camera;
+    public Camera camera;
+    public float distance;
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
-        CorrectPosition();
         trackManager.UpdateNode(transform.position);
     }
+
+    bool face = true;
 
     private void Move()
     {
@@ -29,11 +31,13 @@ public class Train : MonoBehaviour
 
         if (keyboard.dKey.isPressed)
         {
-            transform.Translate(trackManager.GetDirection(transform.position) * speed * Time.deltaTime);
+            distance += speed * Time.fixedDeltaTime;
+            face = true;
         }
         if (keyboard.aKey.isPressed)
         {
-            transform.Translate(-trackManager.GetDirection(transform.position) * speed * Time.deltaTime);
+            distance += -speed * Time.fixedDeltaTime;
+            face = false;
         }
         if (keyboard.wKey.isPressed)
         {
@@ -44,19 +48,24 @@ public class Train : MonoBehaviour
             this.transform.Translate(-Vector3.up * speed * Time.deltaTime);
         }
 
-        transform.GetChild(0).rotation = Quaternion.Lerp(transform.GetChild(0).rotation, Quaternion.LookRotation (trackManager.GetDirection(transform.position)), Time.deltaTime*4);
+        var next = trackManager.UpdatePosition (ref distance);
+        transform.position = new Vector3(next.x, transform.position.y, next.z);
 
-        Camera();
-    }
+        var q = new Quaternion();
+        q.SetLookRotation(trackManager.GetDirection(distance, face));
 
-    void Camera ()
-    {
-        GetComponent<Camera>().transform.position = transform.position + transform.GetChild(0).right * 20;
-        GetComponent<Camera>().transform.LookAt(transform.position);
-    }
-
-    void CorrectPosition ()
-    {
         
+
+        transform.GetChild (0).rotation = q;
+
+        if (face)
+        {
+            camera.transform.position = transform.position + transform.GetChild(0).right*20;
+        } else
+        {
+            camera.transform.position = transform.position - transform.GetChild(0).right * 20;
+        }
+
+        camera.transform.LookAt(transform.position);
     }
 }
