@@ -14,7 +14,7 @@ public class Train : MonoBehaviour
     }
 
     public float speed;
-    public Camera camera;
+    //public Camera camera;
 
     void Update()
     {
@@ -51,8 +51,8 @@ public class Train : MonoBehaviour
 
     void Camera ()
     {
-        camera.transform.position = transform.position + transform.GetChild(0).right * 20;
-        camera.transform.LookAt(transform.position);
+        GetComponent<Camera>().transform.position = transform.position + transform.GetChild(0).right * 20;
+        GetComponent<Camera>().transform.LookAt(transform.position);
     }
 
     void CorrectPosition ()
