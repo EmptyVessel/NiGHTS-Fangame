@@ -51,18 +51,17 @@ public class TrackManager : MonoBehaviour
         return currentNode.GetPosition(dis / currentNode.distance);
     }
 
-    //Get direction for direction by calculating the forward-finite-difference
     //facing: true - right; false - left
     public Vector3 GetDirection(float dis, bool facing)
     {
-        var v = GetPosition(dis);
+        var v = currentNode.GetDirection (dis/currentNode.distance);
 
         if (facing)
         {
-            return (GetPosition(dis + 0.1f) - v).normalized;
+            return v;
         } else
         {
-            return (GetPosition(dis- 0.1f) - v).normalized;
+            return -v;
         }
     }
 

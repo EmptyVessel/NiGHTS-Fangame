@@ -42,13 +42,19 @@ public class Node : MonoBehaviour
 
     public Vector3[] interpolation;
 
+    //Final calculation of the spline segment
     public Vector3 GetPosition (float t)
     {
-        return interpolation[0] * t* t * t + interpolation [1]*t*t + interpolation[2]*t + transform.position;
+        return ((interpolation[0] * t + interpolation [1])*t + interpolation[2])*t + transform.position;
 
         return Vector3.Lerp(transform.position, child.position, t);
     }
 
+    //Spline segment derivative
+    public Vector3 GetDirection(float t)
+    {
+        return ((3*interpolation[0] * t + 2*interpolation[1]) * t + interpolation[2]).normalized;
+    }
 
     public void UpdateConstants ()
     {
@@ -56,9 +62,13 @@ public class Node : MonoBehaviour
         interpolation = new Vector3[3];
 
         Vector3 p0 = parent.position;
+        p0.y = 0;
         Vector3 p1 = transform.position;
+        p1.y = 0;
         Vector3 p2 = child.position;
+        p2.y = 0;
         Vector3 p3 = child.GetComponent<Node>().child.position;
+        p3.y = 0;
 
         float t1 = Mathf.Sqrt(Vector3.Distance(p1, p0));
         float t2 = t1+Mathf.Sqrt(Vector3.Distance (p2, p1));
