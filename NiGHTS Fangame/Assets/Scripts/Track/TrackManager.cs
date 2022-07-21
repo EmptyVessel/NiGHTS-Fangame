@@ -65,7 +65,7 @@ public class TrackManager : MonoBehaviour
         float dis = (GetPosition (t)-pos).sqrMagnitude;
         float d;
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
             d = (GetPosition(t + dT) - pos).sqrMagnitude;
 
@@ -87,7 +87,12 @@ public class TrackManager : MonoBehaviour
             dT /= 2f;
         }
 
-        print(Vector3.Dot ((GetPosition(t) - pos).normalized, GetDirection(t)));
+        var f = Vector3.Dot((GetPosition(t) - pos).normalized, GetDirection(t));
+
+        if (f > 0.02)
+        {
+            print(f);
+        }
 
         return t;
     }
