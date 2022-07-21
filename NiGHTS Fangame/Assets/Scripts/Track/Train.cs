@@ -15,7 +15,6 @@ public class Train : MonoBehaviour
 
     public float speed;
     public Camera camera;
-    public float distance;
 
     void FixedUpdate()
     {
@@ -31,12 +30,12 @@ public class Train : MonoBehaviour
 
         if (keyboard.dKey.isPressed)
         {
-            distance += speed * Time.fixedDeltaTime;
+            this.transform.Translate(transform.GetChild(0).forward * speed * Time.deltaTime);
             face = true;
         }
         if (keyboard.aKey.isPressed)
         {
-            distance += -speed * Time.fixedDeltaTime;
+            this.transform.Translate(transform.GetChild(0).forward * speed * Time.deltaTime);
             face = false;
         }
         if (keyboard.wKey.isPressed)
@@ -48,13 +47,8 @@ public class Train : MonoBehaviour
             this.transform.Translate(-Vector3.up * speed * Time.deltaTime);
         }
 
-        var next = trackManager.UpdatePosition (ref distance);
-        transform.position = new Vector3(next.x, transform.position.y, next.z);
-
         var q = new Quaternion();
-        q.SetLookRotation(trackManager.GetDirection(distance, face));
-
-        
+        q.SetLookRotation(trackManager.GetDirection(transform.position, face));
 
         transform.GetChild (0).rotation = q;
 

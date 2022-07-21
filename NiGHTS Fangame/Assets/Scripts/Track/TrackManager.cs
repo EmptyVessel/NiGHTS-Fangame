@@ -16,45 +16,22 @@ public class TrackManager : MonoBehaviour
     public Node currentNode;
 
     //Gets position along the track and doesn't update current node
-    public Vector3 GetPosition(float dis)
+    //Paremetric relation
+    public Vector3 GetPosition(float t)
     {
-        var node = currentNode;
-
-        while (dis >= node.distance)
-        {
-            dis -= node.distance;
-            node = node.child.GetComponent<Node>();
-        }
-        while (dis < 0)
-        {
-            node = node.parent.GetComponent<Node>();
-            dis += node.distance;
-        }
-
-        return node.GetPosition(dis / node.distance);
+        return currentNode.GetPosition(t);
     }
 
-    //Gets position along the track and updated the current node
-    public Vector3 UpdatePosition(ref float dis)
+    //Position relation
+    public Vector3 GetPosition(Vector3 pos)
     {
-        while (dis >= currentNode.distance)
-        {
-            dis -= currentNode.distance;
-            currentNode = currentNode.child.GetComponent<Node>();
-        }
-        while (dis < 0)
-        {
-            currentNode = currentNode.parent.GetComponent<Node>();
-            dis += currentNode.distance;
-        }
-
-        return currentNode.GetPosition(dis / currentNode.distance);
+        return currentNode.GetPosition(GetDistanceAlongEdge (pos));
     }
 
     //facing: true - right; false - left
-    public Vector3 GetDirection(float dis, bool facing)
+    public Vector3 GetDirection(float t, bool facing)
     {
-        var v = currentNode.GetDirection (dis/currentNode.distance);
+        var v = currentNode.GetDirection (t);
 
         if (facing)
         {
@@ -65,13 +42,26 @@ public class TrackManager : MonoBehaviour
         }
     }
 
+    public Vector3 GetDirection(Vector3 pos, bool facing)
+    {
+        print(GetDistanceAlongEdge(pos));
+        var v = currentNode.GetDirection(GetDistanceAlongEdge (pos));
 
-    //depreceated
+        if (facing)
+        {
+            return v;
+        }
+        else
+        {
+            return -v;
+        }
+    }
+
     public void UpdateNode (Vector3 pos)
     {
         float dis = GetDistanceAlongEdge(pos);
 
-        if (dis > currentNode.distance)
+        if (dis > 1)
         {
             currentNode = currentNode.child.GetComponent <Node>();
         }
@@ -81,13 +71,13 @@ public class TrackManager : MonoBehaviour
         }
     }
 
-    //depreceated
+
     public float GetDistanceAlongEdge(Vector3 pos)
     {
         //Vector from the node
         var v1 = pos - currentNode.transform.position;
 
-        return Vector3.Dot(v1, currentNode.direction);
+        return Vector3.Dot(v1, currentNode.direction)/currentNode.distance;
     }
 
 
