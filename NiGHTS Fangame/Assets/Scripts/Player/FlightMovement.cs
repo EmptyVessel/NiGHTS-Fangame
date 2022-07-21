@@ -42,6 +42,10 @@ public class FlightMovement : MonoBehaviour
         MoveCalc();
         RailLock();
         controller.Move(moveVector);
+
+        //Track snapping, make sure to rewrite it in a way that's good for you
+        var v = trackManager.GetPosition(transform.position);
+        controller.Move(new Vector3 (v.x, transform.position.y, v.z)-transform.position);
     }
 
     private void MoveCalc()
