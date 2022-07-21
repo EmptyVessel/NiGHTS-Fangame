@@ -28,33 +28,14 @@ public class TrackManager : MonoBehaviour
         return currentNode.GetPosition(GetDistanceAlongEdge (pos));
     }
 
-    //facing: true - right; false - left
-    public Vector3 GetDirection(float t, bool facing)
+    public Vector3 GetDirection(float t)
     {
-        var v = currentNode.GetDirection (t);
-
-        if (facing)
-        {
-            return v;
-        } else
-        {
-            return -v;
-        }
+        return currentNode.GetDirection (t);
     }
 
-    public Vector3 GetDirection(Vector3 pos, bool facing)
+    public Vector3 GetDirection(Vector3 pos)
     {
-        print(GetDistanceAlongEdge(pos));
-        var v = currentNode.GetDirection(GetDistanceAlongEdge (pos));
-
-        if (facing)
-        {
-            return v;
-        }
-        else
-        {
-            return -v;
-        }
+        return currentNode.GetDirection(GetDistanceAlongEdge (pos));
     }
 
     public void UpdateNode (Vector3 pos)
@@ -75,9 +56,40 @@ public class TrackManager : MonoBehaviour
     public float GetDistanceAlongEdge(Vector3 pos)
     {
         //Vector from the node
+        pos.y = currentNode.transform.position.y;
         var v1 = pos - currentNode.transform.position;
+        float t = Vector3.Dot(v1, currentNode.direction) / currentNode.distance;
+        float nt = t;
+        float dT = 0.1f;
 
-        return Vector3.Dot(v1, currentNode.direction)/currentNode.distance;
+        float dis = (GetPosition (t)-pos).sqrMagnitude;
+        float d;
+
+        for (int i = 0; i < 8; i++)
+        {
+            d = (GetPosition(t + dT) - pos).sqrMagnitude;
+
+            if ((GetPosition(t+dT) - pos).sqrMagnitude < dis)
+            {
+                dis = d;
+                nt = t+dT;
+            }
+
+            d = (GetPosition(t + dT) - pos).sqrMagnitude;
+
+            if ((GetPosition(t - dT) - pos).sqrMagnitude < dis)
+            {
+                dis = d;
+                nt = t-dT;
+            }
+
+            t = nt;
+            dT /= 2f;
+        }
+
+        print(Vector3.Dot ((GetPosition(t) - pos).normalized, GetDirection(t)));
+
+        return t;
     }
 
 

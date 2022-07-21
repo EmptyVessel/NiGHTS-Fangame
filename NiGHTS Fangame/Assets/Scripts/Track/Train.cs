@@ -22,8 +22,6 @@ public class Train : MonoBehaviour
         trackManager.UpdateNode(transform.position);
     }
 
-    bool face = true;
-
     private void Move()
     {
         var keyboard = Keyboard.current;
@@ -31,12 +29,10 @@ public class Train : MonoBehaviour
         if (keyboard.dKey.isPressed)
         {
             this.transform.Translate(transform.GetChild(0).forward * speed * Time.deltaTime);
-            face = true;
         }
         if (keyboard.aKey.isPressed)
         {
-            this.transform.Translate(transform.GetChild(0).forward * speed * Time.deltaTime);
-            face = false;
+            this.transform.Translate(-transform.GetChild(0).forward * speed * Time.deltaTime);
         }
         if (keyboard.wKey.isPressed)
         {
@@ -48,17 +44,12 @@ public class Train : MonoBehaviour
         }
 
         var q = new Quaternion();
-        q.SetLookRotation(trackManager.GetDirection(transform.position, face));
+        q.SetLookRotation(trackManager.GetDirection(transform.position));
 
-        transform.GetChild (0).rotation = q;
+        transform.GetChild(0).rotation = q;
 
-        if (face)
-        {
-            camera.transform.position = transform.position + transform.GetChild(0).right*20;
-        } else
-        {
-            camera.transform.position = transform.position - transform.GetChild(0).right * 20;
-        }
+        transform.GetChild(1).position = trackManager.GetPosition(transform.position);
+        camera.transform.position = transform.position + transform.GetChild(0).right * 20;
 
         camera.transform.LookAt(transform.position);
     }
