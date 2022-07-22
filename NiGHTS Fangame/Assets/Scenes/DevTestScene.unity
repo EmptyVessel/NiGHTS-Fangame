@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -775,13 +775,14 @@ GameObject:
   - component: {fileID: 881686247}
   - component: {fileID: 881686246}
   - component: {fileID: 881686248}
+  - component: {fileID: 881686249}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!143 &881686246
 CharacterController:
   m_ObjectHideFlags: 0
@@ -831,16 +832,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackManager: {fileID: 1850649304}
   controller: {fileID: 0}
+  link: {fileID: 0}
   controlVector: {x: 0, y: 0}
   tempVector: {x: 0, y: 0, z: 0}
   moveVector: {x: 0, y: 0, z: 0}
   correctedY: 0
   lastDir: {x: 0, y: 0}
-  speed: 20
   drillDash: 0
+  speed: 10
   xLag: 0
+  velocity: 0
+  turnSpeed: 0
   noFall: 0
   followTrack: 1
+--- !u!114 &881686249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881686244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78978d879b3469d44b0368e3e11d1abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  drillGauge: 0
+  drillGaugeMax: 50
+  canDash: 0
+  currentLink: 0
+  lastLink: 0
+  linkReset: 0
+  chipCount: 0
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1130012097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,7 +1565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1525243362
 MonoBehaviour:
   m_ObjectHideFlags: 0

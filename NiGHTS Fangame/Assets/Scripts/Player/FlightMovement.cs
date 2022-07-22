@@ -8,16 +8,19 @@ public class FlightMovement : MonoBehaviour
     public TrackManager trackManager;
     public CharacterController controller;
     public PlayerInputActions pia;
+    public Link link;
 
     [Header("Movement Calculation")]
-    public Vector2 controlVector = Vector2.zero;    // Controller vector
-    public Vector3 tempVector = Vector2.zero;   // First movement vector
-    public Vector3 moveVector = Vector3.zero;   // Master movement vector
+    public Vector2 controlVector = Vector2.zero;
+    public Vector3 tempVector = Vector2.zero;
+    public Vector3 moveVector = Vector3.zero;
     public float correctedY = 0;
-    public Vector2 lastDir;     // Dash vector
-    public float speed = 20f;
+    public Vector2 lastDir;
     public bool drillDash;
+    public float speed = 10f;
     public float xLag = 0f;
+    public float velocity = 0f;
+    public float turnSpeed = 0f;
 
     [Header("Dev Options")]
     public bool noFall = false;
@@ -26,6 +29,7 @@ public class FlightMovement : MonoBehaviour
     void Start()
     {
         // Get controller and move to node 0
+        link = GetComponent<Link>();
         controller = GetComponent<CharacterController>();
         controller.enabled = false;
         transform.position = trackManager.tracks[0].nodes[0].transform.position;
@@ -38,57 +42,51 @@ public class FlightMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        drillDash = ConvertToBool(pia.Player.AButton.ReadValue<float>());
         MoveCalc();
         RailLock();
-        controller.Move(moveVector);
+        MovementPassthrough();
 
-        //Track snapping, make sure to rewrite it in a way that's good for you
-        var v = trackManager.GetPosition(transform.position);
-        controller.Move(new Vector3 (v.x, transform.position.y, v.z)-transform.position);
     }
 
     private void MoveCalc()
     {
         trackManager.UpdateNode(transform.position);
-
-        // Add lag to X axis and resolve the control vector
-        float xOld = controlVector.x;
         controlVector = pia.Player.LeftStick.ReadValue<Vector2>();
-        xLag = Mathf.Lerp(xLag, xOld, Time.deltaTime * (2.5f - pia.Player.AButton.ReadValue<float>()));
+        drillDash = ConvertToBool(pia.Player.AButton.ReadValue<float>());
 
-        if (!drillDash)
+        // Slow Descend when not moving. Turn on "noFall" to disable this
+        if (controlVector.x == 0 && controlVector.y == 0 && (moveVector.x < 0.1 && moveVector.x > -0.1))
         {
-            // Slow Descend when not moving. Turn on "noFall" to disable this
-            if (controlVector.x == 0 && controlVector.y == 0 && (moveVector.x < 0.1 && moveVector.x > -0.1))
-            {
-                if (!noFall) tempVector = new Vector3(0, -0.075f, 0);
-                if (noFall) tempVector = Vector3.zero;
-            }
-            // Standard movement
-            else tempVector = (transform.forward * xLag + transform.up * controlVector.y) * (Time.deltaTime * speed);
+            if (!noFall) tempVector = new Vector3(0, -0.075f, 0);
+            if (noFall) tempVector = Vector3.zero;
+        }
+        // Standard movement
+        else tempVector = (transform.forward * controlVector.x + transform.up * controlVector.y);
 
-            // Add lag to Y input and set master movement vector
-            correctedY = Mathf.Lerp(correctedY, tempVector.y, Time.deltaTime * 6);
-            moveVector = new Vector3(tempVector.x, correctedY, tempVector.z);
-        }
-        if (drillDash)
+
+        // Calculate velocity and turn speed
+        if (!drillDash || (drillDash && !link.canDash))
         {
-            // Dash in last known direction when not moving
-            if (controlVector.x == 0 && controlVector.y == 0)
-            {
-                tempVector = (transform.forward * lastDir.x + transform.up * lastDir.y) * (Time.deltaTime * (speed * 1.75f));
-            }
-            // Standard dashing movement
-            else
-            {
-                lastDir = controlVector;
-                tempVector = (transform.forward * xLag + transform.up * controlVector.y) * (Time.deltaTime * (speed * 1.75f));
-            }
-            // Add lag to Y input and set master movement vector
-            correctedY = Mathf.Lerp(correctedY, tempVector.y, Time.deltaTime * 1.5f);
-            moveVector = new Vector3(tempVector.x, correctedY, tempVector.z);
+            velocity = Mathf.Lerp(velocity, speed, Time.deltaTime * 3);
+            turnSpeed = Mathf.Lerp(turnSpeed, 6, Time.deltaTime * 3);
         }
+        if (drillDash && link.canDash)
+        {
+            velocity = Mathf.Lerp(velocity, speed * 3.5f, Time.deltaTime * 8);
+            turnSpeed = Mathf.Lerp(turnSpeed, 0.1f, Time.deltaTime * 8);
+        }
+        tempVector = tempVector * (Time.deltaTime * velocity);
+        moveVector = Vector3.Lerp(moveVector, tempVector, Time.deltaTime * turnSpeed);
+    }
+
+    private void MovementPassthrough()
+    {
+        // Set master vector and pass it to character controller
+        controller.Move(moveVector);
+
+        //Track snapping, make sure to rewrite it in a way that's good for you
+        var v = trackManager.GetPosition(transform.position);
+        controller.Move(new Vector3(v.x, transform.position.y, v.z) - transform.position);
     }
 
     private void RailLock()
