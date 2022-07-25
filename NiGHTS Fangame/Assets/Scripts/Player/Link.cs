@@ -11,7 +11,6 @@ public class Link : MonoBehaviour
     public float currentLink;
     public float lastLink;
     public float linkTimer;
-
     public float chipCount;
 
     // Start is called before the first frame update
@@ -26,6 +25,7 @@ public class Link : MonoBehaviour
     {
         Corrections();
         DashGauge();
+        LinkTimer();
     }
 
     private void DashGauge()
@@ -76,5 +76,45 @@ public class Link : MonoBehaviour
             drillGauge += add * currentLink;
         }
         else drillGauge += add;
+    }
+
+    private void LinkTimer()
+    {
+        if (currentLink > lastLink)
+        {
+            linkTimer = 7;
+            lastLink = currentLink;
+        }
+
+        if (linkTimer > 0)
+        {
+            linkTimer -= Time.deltaTime * (currentLink * 0.05f + 1);
+        }
+
+        if (linkTimer < 0)
+        {
+            linkTimer = 0;
+            currentLink = 0;
+            lastLink = 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Link")
+        {
+            currentLink++;
+            IncreaseGauge(0.1f, true);
+            Debug.Log("Picked Up Link Object");
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "Chip")
+        {
+            currentLink++;
+            IncreaseGauge(0.2f, true);
+            chipCount++;
+            Debug.Log("Picked Up Chip");
+            Destroy(other.gameObject);
+        }
     }
 }

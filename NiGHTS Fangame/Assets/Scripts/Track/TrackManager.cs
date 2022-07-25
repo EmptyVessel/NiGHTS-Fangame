@@ -91,7 +91,7 @@ public class TrackManager : MonoBehaviour
 
         if (f > 0.02)
         {
-            print(f);
+            //print(f);
         }
 
         return t;
